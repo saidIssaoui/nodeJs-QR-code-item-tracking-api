@@ -1,0 +1,179 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Structure:
+    
+    properties:
+      type_structure:
+        type: string
+        description: structure 
+      adress: 
+        description: structure 
+        items:
+            $ref: './address.yaml#/definitions/Adress'   
+      contact_pro:
+        description: structure 
+        items:
+            $ref: './contact_perso.yaml#/definitions/Contact_perso'      
+      contrat_abonnement:
+        
+        description: structure 
+        items:
+            $ref: './contrat_abonnement.yaml#/definitions/Contrat_abonnement'   
+      informations_administratifs:
+        
+        description: structure 
+        items:
+            $ref: './informations_administratifs.yaml#/definitions/Informations_administratifs'    
+      nom_commercial:
+        type: string
+        description: structure
+      numero_siret:
+        type: number
+        description: structure
+      nombre_salarie:
+        type: number
+        description: structure   
+      association:
+        type: string
+        description: structure
+      id_denomination_social:
+        type: string
+        description: structure
+      residence:
+        
+        description: structure 
+        items:
+            $ref: './residence.yaml#/definitions/Residence'                        
+    required:
+      - type_structure
+      - adress
+      - contact_pro
+      - contrat_abonnement
+      - informations_administratifs
+      - nom_commercial
+      - numero_siret
+      - nombre_salarie
+      - association
+      - id_denomination_social
+      - residence
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetStructureListResponse:
+    required:
+      - structure
+    properties:
+      # object of structure
+      structure:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            type_structure:
+              type: string
+              description: structure 
+            adress:
+              
+              description: structure 
+              items:
+                  $ref: './address.yaml#/definitions/Adress'   
+            contact_pro:
+              
+              description: structure 
+              items:
+                  $ref: './contact_perso.yaml#/definitions/Contact_perso'      
+            contrat_abonnement:
+              
+              description: structure 
+              items:
+                  $ref: './contrat_abonnement.yaml#/definitions/Contrat_abonnement'   
+            informations_administratifs:
+              
+              description: structure 
+              items:
+                  $ref: './informations_administratifs.yaml#/definitions/Informations_administratifs'    
+            nom_commercial:
+              type: string
+              description: structure
+            numero_siret:
+              type: string
+              description: structure
+            nombre_salarie:
+              type: string
+              description: structure   
+            association:
+              type: string
+              description: structure
+            id_denomination_social:
+              type: string
+              description: structure
+            residence:
+              
+              description: structure 
+              items:
+                  $ref: './residence.yaml#/definitions/Residence'   
+  GetStructureResponse:
+      required:
+        - _id
+        - type_structure
+        - adress
+        - contact_pro
+        - contrat_abonnement
+        - informations_administratifs
+        - nom_commercial
+        - numero_siret
+        - nombre_salarie
+        - association
+        - id_denomination_social
+        - residence
+      properties:
+        _id:
+          type: string
+        type_structure:
+          type: string
+          description: structure 
+        adress:
+          
+          description: structure 
+          items:
+              $ref: './address.yaml#/definitions/Adress'   
+        contact_pro:
+          
+          description: structure 
+          items:
+              $ref: './contact_perso.yaml#/definitions/Contact_perso'      
+        contrat_abonnement:
+          type: arrray
+          description: structure 
+          items:
+              $ref: './contrat_abonnement.yaml#/definitions/Contrat_abonnement'   
+        informations_administratifs:
+          
+          description: structure 
+          items:
+              $ref: './informations_administratifs.yaml#/definitions/Informations_administratifs'    
+        nom_commercial:
+          type: string
+          description: structure
+        numero_siret:
+          type: string
+          description: structure
+        nombre_salarie:
+          type: string
+          description: structure   
+        association:
+          type: string
+          description: structure
+        id_denomination_social:
+          type: string
+          description: structure
+        residence:
+          
+          description: structure 
+          items:
+              $ref: './residence.yaml#/definitions/Residence'        
+        
+

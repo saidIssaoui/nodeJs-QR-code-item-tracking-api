@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /qr_code:
+    # our controller name
+    x-swagger-router-controller: qr_code
+    get:
+      tags:
+      - qr_code
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetQr_codesListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - qr_code
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Qr_code"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /qr_code/{id}:
+    # our controller name
+    x-swagger-router-controller: qr_code
+    get:
+      tags:
+      - qr_code    
+      operationId: getOne
+      description: get a qr_code
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetQr_codeResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - qr_code    
+      operationId: update
+      description: update a qr_code
+      # define the parameters
+      parameters:
+        - name: id
+          description: qr_code id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Qr_code"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - qr_code    
+      operationId: delete qr_code
+      description: delete a qr_code
+      # define the parameters
+      parameters:
+        - name: id
+          description: qr_code id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetQr_codesListResponse:
+        $ref: "./docs/schemas/qr_code.yaml#/definitions/GetQr_codesListResponse"
+      GetQr_codeResponse:
+        $ref: "./docs/schemas/qr_code.yaml#/definitions/GetQr_codeResponse" 
+  
+  schemas:    
+    Qr_code:
+      $ref: "./docs/schemas/qr_code.yaml#/definitions/Qr_code"             

@@ -1,0 +1,97 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Contact_pro:
+    
+    properties:
+      genre:
+        type: string
+        description: contact_pro 
+      nom:
+        type: string
+        description: contact_pro
+      prenom:
+        type: string
+        description: contact_pro
+      numero_tel_pro:
+        type: number
+        description: contact_pro  
+      email_pro:
+        type: string
+        description: contact_pro
+      url_photo:
+        type: string
+        description: contact_pro       
+    required:
+      - genre
+      - nom
+      - prenom
+      - numero_tel_pro
+      - email_pro
+      - url_photo
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetContact_proListResponse:
+    required:
+      - contact_pro
+    properties:
+      # object of contact_pro
+      contact_pro:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            genre:
+              type: string
+              description: contact_pro
+            nom:
+              type: string
+              description: contact_pro 
+            prenom:
+              type: string
+              description: contact_pro 
+            numero_tel_pro:
+              type: string
+              description: contact_pro  
+            email_pro:
+              type: string
+              description: contact_pro 
+            url_photo:
+              type: string
+              description: contact_pro
+
+  GetContact_proResponse:
+      required:
+        - _id
+        - genre
+        - nom
+        - prenom
+        - numero_tel_pro
+        - email_pro
+        - url_photo
+      properties:
+        _id:
+          type: string
+        genre:
+          type: string
+          description: contact_pro 
+        nom:
+          type: string
+          description: contact_pro 
+        prenom:
+          type: string
+          description: contact_pro 
+        numero_tel_pro:
+          type: string
+          description: contact_pro  
+        email_pro:
+          type: string
+          description: contact_pro 
+        url_photo:
+          type: string
+          description: contact_pro
+

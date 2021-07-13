@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/contact_perso:
+    # our controller name
+    x-swagger-router-controller: contact_perso
+    get:
+      tags:
+      - contact_perso
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetContact_persoListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - contact_perso
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Contact_perso"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/contact_perso/{id}:
+    # our controller name
+    x-swagger-router-controller: contact_perso
+    get:
+      tags:
+      - contact_perso    
+      operationId: getOne
+      description: get a contact_perso
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetContact_persoResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - contact_perso    
+      operationId: update
+      description: update a contact_perso
+      # define the parameters
+      parameters:
+        - name: id
+          description: contact_perso id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#components/schemas/contact_perso"
+        
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - contact_perso    
+      operationId: delete contact_perso
+      description: delete a contact_perso
+      # define the parameters
+      parameters:
+        - name: id
+          description: contact_perso id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetContact_persoListResponse:
+        $ref: "./docs/schemas/contact_perso.yaml#/definitions/GetContact_persoListResponse"
+      Getcontact_persoResponse:
+        $ref: "./docs/schemas/contact_perso.yaml#/definitions/Getcontact_persoResponse" 
+  
+  schemas:    
+    Contact_perso:
+      $ref: "./docs/schemas/contact_perso.yaml#/definitions/Contact_perso"

@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+    api:
+        build: .
+        ports:
+            - ${API_PORTS_BINDING}
+        volumes:
+            - .:/home/node
+            - /home/node/node_modules
+        command: ["yarn", "dev"]
+        environment:
+            API_PORT: ${API_PORT}
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge

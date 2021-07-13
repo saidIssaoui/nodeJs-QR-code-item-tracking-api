@@ -1,0 +1,58 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Intervention:
+    
+    properties:
+      date_prochaine_intervention:
+        type: string
+        description: intervention 
+      intervention_par:
+        
+        description: intervention 
+        items:
+            $ref: './utilisateur.yaml#/definitions/Utilisateur'            
+    required:
+      - date_prochaine_intervention
+      - intervention_par
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetInterventionListResponse:
+    required:
+      - intervention
+    properties:
+      # object of intervention
+      intervention:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            date_prochaine_intervention:
+              type: string
+              description: intervention 
+            intervention_par:
+              
+              description: intervention 
+              items:
+                  $ref: './utilisateur.yaml#/definitions/Utilisateur'  
+  GetInterventionResponse:
+      required:
+        - _id
+        - date_prochaine_intervention
+        - intervention_par 
+      properties:
+        _id:
+          type: string
+        date_prochaine_intervention:
+          type: string
+          description: intervention 
+        intervention_par:
+          
+          description: intervention 
+          items:
+              $ref: './utilisateur.yaml#/definitions/Utilisateur'          
+        
+

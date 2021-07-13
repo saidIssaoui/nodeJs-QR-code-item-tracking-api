@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /sous_categorie:
+    # our controller name
+    x-swagger-router-controller: sous_categorie
+    get:
+      tags:
+      - sous_categorie
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetSous_categorieListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - sous_categorie
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Sous_categorie"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /sous_categorie/{id}:
+    # our controller name
+    x-swagger-router-controller: sous_categorie
+    get:
+      tags:
+      - sous_categorie    
+      operationId: getOne
+      description: get a sous_categorie
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetSous_categorieResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - sous_categorie    
+      operationId: update
+      description: update a sous_categorie
+      # define the parameters
+      parameters:
+        - name: id
+          description: sous_categorie id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Sous_categorie"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - sous_categorie    
+      operationId: delete sous_categorie
+      description: delete a sous_categorie
+      # define the parameters
+      parameters:
+        - name: id
+          description: sous_categorie id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetSous_categorieListResponse:
+        $ref: "./docs/schemas/sous_categorie.yaml#/definitions/GetSous_categorieListResponse"
+      GetSous_categorieResponse:
+        $ref: "./docs/schemas/sous_categorie.yaml#/definitions/GetSous_categorieResponse" 
+  
+  schemas:    
+    Sous_categorie:
+      $ref: "./docs/schemas/sous_categorie.yaml#/definitions/Sous_categorie"             

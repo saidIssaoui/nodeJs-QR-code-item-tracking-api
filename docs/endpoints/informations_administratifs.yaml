@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/informations_administratifs:
+    # our controller name
+    x-swagger-router-controller: informations_administratifs
+    get:
+      tags:
+      - informations_administratifs
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetInformations_administratifsListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - informations_administratifs
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Informations_administratifs"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/informations_administratifs/{id}:
+    # our controller name
+    x-swagger-router-controller: informations_administratifs
+    get:
+      tags:
+      - informations_administratifs    
+      operationId: getOne
+      description: get a informations_administratifs
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/Getinformations_administratifsResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - informations_administratifs    
+      operationId: update
+      description: update a informations_administratifs
+      # define the parameters
+      parameters:
+        - name: id
+          description: informations_administratifs id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Informations_administratifs"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - informations_administratifs    
+      operationId: delete informations_administratifs
+      description: delete a informations_administratifs
+      # define the parameters
+      parameters:
+        - name: id
+          description: informations_administratifs id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetInformations_administratifsListResponse:
+        $ref: "./docs/schemas/informations_administratifs.yaml#/definitions/GetInformations_administratifsListResponse"
+      Getinformations_administratifsResponse:
+        $ref: "./docs/schemas/informations_administratifs.yaml#/definitions/Getinformations_administratifsResponse" 
+  
+  schemas:    
+    Informations_administratifs:
+      $ref: "./docs/schemas/informations_administratifs.yaml#/definitions/Informations_administratifs"             

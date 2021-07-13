@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: REST API documentation.
+  version: 0.1.9
+
+ #_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/objet:
+    # our controller name
+    x-swagger-router-controller: objet
+    get:
+      tags:
+      - objet    
+      operationId: 	getAllobjet
+      description: get the object list
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetObjetListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - objet
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Objet"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/objet/{id}:
+    # our controller name
+    x-swagger-router-controller: objet
+    get:
+      tags:
+      - objet
+      operationId: getObject
+      description: get an object
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetObjectResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - objet
+      operationId: updateObject
+      description: update an object
+      # define the parameters
+      parameters:
+        - name: id
+          description: object id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Objet"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - objet
+      operationId: deleteObject
+      description: delete an object
+      # define the parameters
+      parameters:
+        - name: id
+          description: object id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetObjetListResponse:
+        $ref: "./docs/schemas/objet.yaml#/definitions/GetObjetListResponse"
+      GetObjectResponse:
+        $ref: "./docs/schemas/objet.yaml#/definitions/GetObjectResponse" 
+  
+  schemas:   
+    Objet:
+      $ref: "./docs/schemas/objet.yaml#/definitions/Objet"

@@ -1,0 +1,86 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Contact_perso:
+    
+    properties:
+      genre:
+        type: string
+        description: contact_perso 
+      nom:
+        type: string
+        description: contact_perso 
+      prenom:
+        type: string
+        description: contact_perso 
+      numero_tel_perso:
+        type: number
+        description: contact_perso  
+      email_perso:
+        type: string
+        description: contact_perso 
+      url_photo:
+        type: string
+        description: contact_perso        
+    required:
+      - genre
+      - nom
+      - prenom
+      - numero_tel_perso
+      - email_perso
+      - url_photo
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetContact_persoListResponse:
+    required:
+      - contact_perso
+    properties:
+      # object of contact_perso
+      contact_perso:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            genre:
+              type: string
+            nom:
+              type: string
+            prenom:
+              type: string
+            numero_tel_perso:
+              type: string
+            email_perso:
+              type: string  
+            url_photo:
+              type: string      
+
+  Getcontact_persoResponse:
+      required:
+        - _id
+        - genre
+        - nom
+        - prenom
+        - numero_tel_perso
+        - email_perso
+        - url_photo
+      properties:
+        _id:
+          type: string
+        genre:
+          type: string
+        nom:
+          type: string
+        prenom:
+          type: string
+        numero_tel_perso:
+          type: string
+        email_perso:
+          type: string  
+        url_photo:
+          type: string   
+        
+

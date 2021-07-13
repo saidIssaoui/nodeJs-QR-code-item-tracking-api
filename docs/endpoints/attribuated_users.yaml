@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/attribuated_users:
+    # our controller name
+    x-swagger-router-controller: attribuated_users
+    get:
+      tags:
+      - attribuated_users
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetAttribuated_usersListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - attribuated_users
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Attribuated_users"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/attribuated_users/{id}:
+    # our controller name
+    x-swagger-router-controller: attribuated_users
+    get:
+      tags:
+      - attribuated_users    
+      operationId: getOne
+      description: get a attribuated_users
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetAttribuated_usersResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - attribuated_users    
+      operationId: update
+      description: update a attribuated_users
+      # define the parameters
+      parameters:
+        - name: id
+          description: attribuated_users id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: 
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#components/schemas/Attribuated_users" 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - attribuated_users    
+      operationId: delete attribuated_users
+      description: delete a attribuated_users
+      # define the parameters
+      parameters:
+        - name: id
+          description: attribuated_users id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+            
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetAttribuated_usersListResponse:
+        $ref: "./docs/schemas/attribuated_users.yaml#/definitions/GetAttribuated_usersListResponse"
+      GetAttribuated_usersResponse:
+        $ref: "./docs/schemas/attribuated_users.yaml#/definitions/GetAttribuated_usersResponse" 
+  
+  schemas:    
+    Attribuated_users:
+      $ref: "./docs/schemas/attribuated_users.yaml#/definitions/Attribuated_users"             

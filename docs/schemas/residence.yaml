@@ -1,0 +1,67 @@
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Residence:
+    
+    properties:
+      nb_residents:
+        type: number
+        description: residence 
+      nb_unite:
+        type: number
+        description: residence 
+      nb_etage:
+        type: number
+        description: residence 
+      nb_salle:  
+        type: number 
+    required:
+      - nb_residents
+      - nb_unite
+      - nb_etage
+      - nb_salle
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetResidencesListResponse:
+    required:
+      - residence
+    properties:
+      # object of residence
+      residence:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            nb_residents:
+              type: string
+              description: residence 
+            nb_unite:
+              type: string
+              description: residence 
+            nb_etage:
+              type: string
+              description: residence 
+            nb_salle:  
+              type: string
+
+  GetResidenceResponse:
+      required:
+        - nb_residents
+        - nb_unite
+        - nb_etage
+        - nb_salle
+      properties:
+        _id:
+          type: string
+        nb_residents:
+          type: string
+          description: residence 
+        nb_unite:
+          type: string
+          description: residence 
+        nb_etage:
+          type: string
+          description: residence 
+        nb_salle:  
+          type: string
+  

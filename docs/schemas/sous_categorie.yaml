@@ -1,0 +1,40 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Sous_categorie:
+    
+    properties:
+      titre:
+        type: string
+        description: sous_categorie   
+    required:
+      - titre
+      
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetSous_categorieListResponse:
+    required:
+      - sous_categorie
+    properties:
+      # object of sous_categorie
+      sous_categorie:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            titre:
+              type: string
+              description: sous_categorie 
+
+  GetSous_categorieResponse:
+      required:
+        - titre        
+      properties:
+        _id:
+          type: string
+        titre:
+          type: string
+          description: sous_categorie  

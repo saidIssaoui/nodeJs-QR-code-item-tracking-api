@@ -1,0 +1,40 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Contrat_abonnement:
+    
+    properties:
+      contrat_abonnement:
+        type: string
+        description: contrat_abonnement
+    required:
+      - contrat_abonnement
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  Getcontrat_abonnementListResponse:
+    required:
+      - contrat_abonnement
+    properties:
+      # object of contrat_abonnement
+      contrat_abonnement:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            contrat_abonnement:
+              type: string
+              description: contrat_abonnement 
+
+  Getcontrat_abonnementResponse:
+      required:
+        - contrat_abonnement
+      properties:
+        _id:
+          type: string
+        contrat_abonnement:
+          type: string
+          description: contrat_abonnement 
+  

@@ -1,0 +1,78 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Sizes:
+    
+    properties:
+      unit:
+        type: string
+        description: sizes 
+      length:
+        type: Number
+        description: sizes 
+      width:
+        type: Number
+        description: sizes 
+      height:  
+        type: Number 
+      diamter:  
+        type: Number  
+    required:
+      - unit
+      - length
+      - width
+      - height
+      - diamter
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetsizesListResponse:
+    required:
+      - sizes
+    properties:
+      # object of sizes
+      sizes:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            unit:
+              type: string
+              description: sizes 
+            length:
+              type: string
+              description: sizes 
+            width:
+              type: string
+              description: sizes 
+            height:  
+              type: string 
+            diamter:  
+              type: string 
+
+  GetSizesResponse:
+      required:
+        - unit
+        - length
+        - width
+        - height
+        - diamter
+      properties:
+        _id:
+          type: string
+        unit:
+          type: string
+          description: sizes 
+        length:
+          type: string
+          description: sizes 
+        width:
+          type: string
+          description: sizes 
+        height:  
+          type: string 
+        diamter:  
+          type: string 
+  

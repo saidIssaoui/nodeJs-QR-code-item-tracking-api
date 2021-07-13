@@ -1,0 +1,43 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Facture:
+    
+    properties:
+      has_received_object:
+        type: string
+        description: facture 
+      date_reception:
+        type: string
+        description: facture 
+    required:
+      - facture
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetFactureListResponse:
+    required:
+      - facture
+    properties:
+      # object of facture
+      facture:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            facture:
+              type: string
+              description: facture 
+
+  GetFactureResponse:
+      required:
+        - facture
+      properties:
+        _id:
+          type: string
+        facture:
+          type: string
+          description: facture 
+  

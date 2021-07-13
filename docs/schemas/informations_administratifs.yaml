@@ -1,0 +1,40 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Informations_administratifs:
+    
+    properties:
+      informations_administratifs:
+        type: string
+        description: informations_administratifs 
+    required:
+      - informations_administratifs
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetInformations_administratifsListResponse:
+    required:
+      - informations_administratifs
+    properties:
+      # object of informations_administratifs
+      informations_administratifs:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            informations_administratifs:
+              type: string
+              description: informations_administratifs 
+
+  Getinformations_administratifsResponse:
+      required:
+        - informations_administratifs
+      properties:
+        _id:
+          type: string
+        informations_administratifs:
+          type: string
+          description: informations_administratifs
+  

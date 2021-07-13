@@ -1,0 +1,50 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Categorie:
+    
+    properties:
+      titre:
+        type: string
+        description: categorie title
+      code_couleur:
+        type: string
+        description: categorie title  
+    required:
+      - titre
+      - code_couleur
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetcategoriesListResponse:
+    required:
+      - categorie
+    properties:
+      # array of categorie
+      categorie:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            titre:
+              type: string  
+            code_couleur:
+              type: string            
+
+  GetcategorieResponse:
+      required:
+        - _id
+        - titre
+        - code_couleur
+      properties:
+        _id:
+          type: string
+        titre:
+          type: string  
+        code_couleur:
+          type: string   
+        
+

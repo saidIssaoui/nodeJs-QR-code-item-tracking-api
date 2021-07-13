@@ -1,0 +1,253 @@
+# complex objet have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC objet____________________________________________________
+  Objet:
+    
+    properties:
+      disponibilite:
+        type: string
+        description: object availability
+      etat:
+        type: string
+        description: objet condition
+      qr_code:
+        
+        description: object qr code
+        items:
+          $ref: './qr_code.yaml#/definitions/Qr_code'
+      categorie: 
+         
+        description: object categorie
+        items:
+          $ref: './categorie.yaml#/definitions/Categorie'
+      sous_categorie: 
+        
+        description: object sub categorie
+        items:
+          $ref: './sous_categorie.yaml#/definitions/Sous_categorie'   
+      photos:
+        type: string
+        description: Url of the photo 
+      attribue_a:
+        type: string
+        description: N/A    
+      marque:
+        type: string
+        description: Brand of the object    
+      a_une_facture:
+        type: string
+        description: facture  
+      historique:
+        
+        description: historique
+        items:
+          $ref: './historique.yaml#/definitions/Historique'
+      facture:
+        
+        description: objet condition
+        items:
+          $ref: './facture.yaml#/definitions/Facture'
+      statut:
+        type: string
+        description: object statut
+      description:  
+        type: string
+        description: object 
+      valeur:  
+        type: string
+        description: object   
+      emplacement:
+        type: string
+        description: object
+      taille_vetement:
+        type: string
+        description: N/A    
+      intervention:
+        
+        description: object  
+        items:
+          $ref: './intervention.yaml#/definitions/Intervention'    
+    required:
+      - disponibilite
+      - etat
+      - qr_code
+      - categorie
+      - sous_categorie
+      - photos
+      - attribue_a
+      - marque
+      - a_une_facture
+      - historique
+      - facture
+      - statut
+      - description
+      - valeur
+      - emplacement
+      - taille_vetement
+      - intervention
+    
+
+#__________________________________________ COMMON objet _______________________________________________________              
+  GetObjetListResponse:
+    required:
+      - objet
+    properties:
+      # object of objet
+      objet:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            disponibilite:
+              type: string
+              description: object availability
+            etat:
+              type: string
+              description: objet condition
+            qr_code:
+              
+              description: object qr code
+              items:
+                $ref: './qr_code.yaml#/definitions/Qr_code'
+            categorie:  
+              
+              description: object categorie
+              items:
+                $ref: './categorie.yaml#/definitions/Categorie'
+            sous_categorie:  
+              
+              description: object sub categorie
+              items:
+                $ref: './sous_categorie.yaml#/definitions/Sous_categorie'   
+            photos:
+              type: string
+              description: Url of the photo 
+            attribue_a:
+              type: string
+              description: N/A    
+            marque:
+              type: string
+              description: Brand of the object    
+            a_une_facture:
+              type: string
+              description: facture  
+            historique:
+              
+              description: historique
+              items:
+                $ref: './historique.yaml#/definitions/Historique'
+            facture:
+              
+              description: objet condition
+              items:
+                $ref: './facture.yaml#/definitions/Facture'
+            statut:
+              type: string
+              description: object statut
+            description:  
+              type: string
+              description: object 
+            valeur:  
+              type: string
+              description: object   
+            emplacement:
+              type: string
+              description: object
+            taille_vetement:
+              type: string
+              description: N/A    
+            intervention:
+              
+              description: object  
+              items:
+                $ref: './intervention.yaml#/definitions/Intervention'             
+  GetObjectResponse:
+      required:
+      - id
+      - disponibilite
+      - etat
+      - qr_code
+      - categorie
+      - sous_categorie
+      - photos
+      - attribue_a
+      - marque
+      - a_une_facture
+      - historique
+      - facture
+      - statut
+      - description
+      - valeur
+      - emplacement
+      - taille_vetement
+      - intervention
+      properties:
+        _id:
+          type: string
+        disponibilite:
+          type: string
+          description: object availability
+        etat:
+          type: string
+          description: objet condition
+        qr_code:
+          
+          description: object qr code
+          items:
+            $ref: './qr_code.yaml#/definitions/Qr_code'
+        categorie:  
+          
+          description: object categorie
+          items:
+            $ref: './categorie.yaml#/definitions/Categorie'
+        sous_categorie:  
+          
+          description: object sub categorie
+          items:
+            $ref: './sous_categorie.yaml#/definitions/Sous_categorie'   
+        photos:
+          type: string
+          description: Url of the photo 
+        attribue_a:
+          type: string
+          description: N/A    
+        marque:
+          type: string
+          description: Brand of the object    
+        a_une_facture:
+          type: string
+          description: facture  
+        historique:
+          
+          description: historique
+          items:
+            $ref: './historique.yaml#/definitions/Historique'
+        facture:
+          
+          description: objet condition
+          items:
+            $ref: './facture.yaml#/definitions/Facture'
+        statut:
+          type: string
+          description: object statut
+        description:  
+          type: string
+          description: object 
+        valeur:  
+          type: string
+          description: object   
+        emplacement:
+          type: string
+          description: object
+        taille_vetement:
+          type: string
+          description: N/A    
+        intervention:
+          
+          description: object  
+          items:
+            $ref: './intervention.yaml#/definitions/Intervention'  

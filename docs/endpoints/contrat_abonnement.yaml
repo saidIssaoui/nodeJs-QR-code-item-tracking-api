@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/contrat_abonnement:
+    # our controller name
+    x-swagger-router-controller: contrat_abonnement
+    get:
+      tags:
+      - contrat_abonnement
+      operationId: getAll
+      description: 
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/Getcontrat_abonnementListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - contrat_abonnement
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contrat_abonnement"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/contrat_abonnement/{id}:
+    # our controller name
+    x-swagger-router-controller: contrat_abonnement
+    get:
+      tags:
+      - contrat_abonnement    
+      operationId: getOne
+      description: get a contrat_abonnement
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/Getcontrat_abonnementResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - contrat_abonnement    
+      operationId: update
+      description: update a contrat_abonnement
+      # define the parameters
+      parameters:
+        - name: id
+          description: contrat_abonnement id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Contrat_abonnement"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - contrat_abonnement    
+      operationId: delete contrat_abonnement
+      description: delete a contrat_abonnement
+      # define the parameters
+      parameters:
+        - name: id
+          description: contrat_abonnement id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      Getcontrat_abonnementListResponse:
+        $ref: "./docs/schemas/contrat_abonnement.yaml#/definitions/Getcontrat_abonnementListResponse"
+      Getcontrat_abonnementResponse:
+        $ref: "./docs/schemas/contrat_abonnement.yaml#/definitions/Getcontrat_abonnementResponse" 
+  
+  schemas:    
+    Contrat_abonnement:
+      $ref: "./docs/schemas/contrat_abonnement.yaml#/definitions/Contrat_abonnement"
+                        

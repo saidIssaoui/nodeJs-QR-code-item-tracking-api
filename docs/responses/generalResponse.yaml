@@ -1,0 +1,13 @@
+definitions:
+  GeneralResponse:
+      
+      properties:
+        success:
+          type: number
+          description: returns 1 if successful
+        description:
+          type: string
+          description: a short general response comment
+      required:
+        - success
+        - description

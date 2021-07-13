@@ -1,0 +1,51 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Attribuated_users:
+    
+    properties:
+      has_received_object:
+        type: string
+        description: attribuated_users 
+      date_reception:
+        type: string
+        description: attribuated_users 
+    required:
+      - has_received_object
+      - date_reception
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetAttribuated_usersListResponse:
+    required:
+      - attribuated_users
+    properties:
+      # object of attribuated_users
+      attribuated_users:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            has_received_object:
+              type: string
+              description: attribuated_users 
+            date_reception:
+              type: string
+              description: attribuated_users 
+
+  GetAttribuated_usersResponse:
+      required:
+        - has_received_object
+        - date_reception
+      properties:
+        _id:
+          type: string
+        has_received_object:
+          type: string
+          description: attribuated_users 
+        date_reception:
+          type: string
+          description: attribuated_users 
+  

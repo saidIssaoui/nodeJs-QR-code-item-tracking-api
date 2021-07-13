@@ -1,0 +1,78 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Qr_code:
+    
+    properties:
+      type:
+        type: string
+        description: qr_code 
+      date_de_generation:
+        type: string
+        description: qr_code 
+      code:
+        type: string
+        description: qr_code 
+      lien_url:  
+        type: string
+      date_reception:  
+        type: string  
+    required:
+      - type
+      - date_de_generation
+      - code
+      - lien_url
+      - date_reception
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetQr_codesListResponse:
+    required:
+      - qr_code
+    properties:
+      # object of qr_code
+      qr_code:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+              description: qr_code 
+            date_de_generation:
+              type: string
+              description: qr_code 
+            code:
+              type: string
+              description: qr_code 
+            lien_url:  
+              type: string
+            date_reception:  
+              type: string
+
+  GetQr_codeResponse:
+      required:
+        - type
+        - date_de_generation
+        - code
+        - lien_url
+        - date_reception
+      properties:
+        _id:
+          type: string
+        type:
+          type: string
+          description: qr_code 
+        date_de_generation:
+          type: string
+          description: qr_code 
+        code:
+          type: string
+          description: qr_code 
+        lien_url:  
+          type: string
+        date_reception:  
+          type: string  

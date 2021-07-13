@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /api/adress:
+    # our controller name
+    x-swagger-router-controller: adress
+    get:
+      tags:
+      - adress
+      operationId: router.get
+      description: get all addresses
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetAdressListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+  /api/adress:          
+    post:
+      summary: Add a new Adress
+      tags:
+      - adress
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Addresse"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /api/adress/{id}:
+    # our controller name
+    x-swagger-router-controller: adress
+    get:
+      tags:
+      - adress    
+      parameters:
+        - name: id
+          description: adress id
+          type: string
+          in: path
+          required: true      
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetAdressResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - adress   
+      operationId: router.put
+      parameters:
+        - name: id
+          description: adress id
+          type: string
+          in: path
+          required: true 
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#components/schemas/Addresse"      
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - adress 
+      operationId: router.delete   
+      description: delete a adress
+      # define the parameters
+      parameters:
+        - name: id
+          description: adress id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string   
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+            
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetAdressListResponse:
+        $ref: "./docs/schemas/address.yaml#/definitions/GetAdressListResponse"
+      GetAdressResponse:
+        $ref: "./docs/schemas/address.yaml#/definitions/GetAdressResponse"  
+  
+  schemas:    
+    Addresse:
+      $ref: "./docs/schemas/address.yaml#/definitions/Adress"               

@@ -1,0 +1,77 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Adress:
+    
+    properties:
+      street_address:
+        type: string
+        description: adress 
+      subdivision:
+        type: string
+        description: adress 
+      postal_code:
+        type: number
+        description: adress 
+      locality:
+        type: string
+        description: adress  
+      country:
+        type: string
+        description: adress       
+    required:
+      - street_address
+      - subdivision
+      - postal_code
+      - locality
+      - country
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetAdressListResponse:
+    required:
+      - adress
+    properties:
+      # array of adress
+      adress:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            street_address:
+              type: string
+            subdivision:
+              type: string
+            postal_code:
+              type: string
+            locality:
+              type: string
+            country:
+              type: string 
+
+  GetAdressResponse:
+      required:
+        - _id
+        - street_address
+        - subdivision
+        - postal_code
+        - locality
+        - country 
+      properties:
+        _id:
+          type: string
+        street_address:
+          type: string
+        subdivision:
+          type: string
+        postal_code:
+          type: string
+        locality:
+          type: string
+        country:
+          type: string          
+        
+

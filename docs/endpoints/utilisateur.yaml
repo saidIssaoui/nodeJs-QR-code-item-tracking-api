@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Phareme API
+  description: REST API documentation.
+  version: 0.1.0
+
+#_______________________________ ENDPOINT DEFINITIONS ________________________________  
+paths:
+  /utilisateur:
+    # our controller name
+    x-swagger-router-controller: utilisateur
+    get:
+      tags:
+      - utilisateur    
+      operationId: 	getAllUtilisateur
+      description: get the utilisateur list
+      # define the type of response for Success "200" and Error
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetUtilisateurListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    post:
+      tags:
+      - utilisateur
+      operationId: router.post
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Utilisateur"
+      responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/components/responses/schemas/GeneralResponse"
+          default:
+            description: Error
+            schema:
+              $ref: "#/components/responses/schemas/ErrorResponse"
+
+  /utilisateur/{id}:
+    # our controller name
+    x-swagger-router-controller: utilisateur
+    get:
+      tags:
+      - utilisateur
+      operationId: getutilisateur
+      description: get an utilisateur
+      # define the success and error response
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GetUtilisateurResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    put:
+      tags:
+      - utilisateur
+      operationId: updateutilisateur
+      description: update an utilisateur
+      # define the parameters
+      parameters:
+        - name: id
+          description: utilisateur id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:                            
+                - type: object
+                  required:
+                  - id
+                  properties:
+                    id:
+                      type: string
+                - $ref: "#/components/schemas/Utilisateur"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+    delete:
+      tags:
+      - utilisateur
+      operationId: deleteutilisateur
+      description: delete an utilisateur
+      # define the parameters
+      parameters:
+        - name: id
+          description: utilisateur id
+          type: string
+          in: path
+          required: true
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              
+              properties:
+                id:
+                  type: string    
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/components/responses/schemas/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/components/responses/schemas/ErrorResponse"
+
+components:
+  responses:
+    schemas:
+      GeneralResponse:
+        $ref: "./docs/responses/errorResponse.yaml#/definitions/ErrorResponse"
+      ErrorResponse:
+        $ref: "./docs/responses/generalResponse.yaml#/definitions/GeneralResponse" 
+      GetUtilisateurListResponse:
+        $ref: "./docs/schemas/utilisateur.yaml#/definitions/GetUtilisateurListResponse"
+      GetUtilisateurResponse:
+        $ref: "./docs/schemas/utilisateur.yaml#/definitions/GetUtilisateurResponse" 
+  
+  schemas:    
+    Utilisateur:
+      $ref: "./docs/schemas/utilisateur.yaml#/definitions/Utilisateur"             

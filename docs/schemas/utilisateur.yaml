@@ -1,0 +1,164 @@
+# complex utilisateur have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC utilisateur____________________________________________________
+  Utilisateur:
+    
+    properties:
+      contact_perso:
+        
+        description: utilisateur 
+        items:
+          $ref: './contact_perso.yaml#/definitions/Contact_perso'
+      contact_pro:
+        
+        description: utilisateur 
+        items:
+          $ref: './contact_pro.yaml#/definitions/Contact_pro'
+      adresse:
+        
+        description: utilisateur 
+        items:
+          $ref: './address.yaml#/definitions/Adress'
+      photo:  
+        type: string
+        description: utilisateur 
+      statut:  
+        type: string
+        description: utilisateur  
+      genre:
+        type: string
+        description: utilisateur genre 
+      mot_de_passe:
+        type: string
+        description: N/A    
+      employe_de:
+        
+        description: utilisateur  
+        items:
+          $ref: './structure.yaml#/definitions/Structure'  
+      niveau:
+        type: string
+        description: utilisateur 
+      contrat:
+        type: string
+        description: utilisateur      
+    required:
+      - contact_perso
+      - contact_pro
+      - adresse
+      - photo
+      - statut
+      - genre
+      - mot_de_passe
+      - employe_de
+      - niveau
+      - contrat      
+#__________________________________________ COMMON utilisateur _______________________________________________________              
+  GetUtilisateurListResponse:
+    required:
+      - utilisateur
+    properties:
+      # object of utilisateur
+      utilisateur:
+        
+        items:
+          type: utilisateur
+          properties:
+            id:
+              type: string
+            contact_perso:
+              type: arry
+              description: utilisateur 
+              items:
+                $ref: './contact_perso.yaml#/definitions/Contact_perso'
+            contact_pro:
+              
+              description: utilisateur 
+              items:
+                $ref: './contact_pro.yaml#/definitions/Contact_pro'
+            adresse:
+              
+              description: utilisateur 
+              items:
+                $ref: './address.yaml#/definitions/Adress'
+            photo:  
+              type: string
+              description: utilisateur 
+            statut:  
+              type: string
+              description: utilisateur  
+            genre:
+              type: string
+              description: utilisateur genre 
+            mot_de_passe:
+              type: string
+              description: N/A    
+            employe_de:
+              
+              description: utilisateur  
+              items:
+                $ref: './structure.yaml#/definitions/Structure'  
+            niveau:
+              type: string
+              description: utilisateur 
+            contrat:
+              type: string
+              description: utilisateur
+  GetUtilisateurResponse:
+      required:
+      - id
+      - contact_perso
+      - contact_pro
+      - adresse
+      - photo
+      - statut
+      - genre
+      - mot_de_passe
+      - employe_de
+      - niveau
+      - contrat     
+      properties:
+        _id:
+          type: string
+        contact_perso:
+          
+          description: utilisateur 
+          items:
+            $ref: './contact_perso.yaml#/definitions/Contact_perso'
+        contact_pro:
+          
+          description: utilisateur 
+          items:
+            $ref: './contact_pro.yaml#/definitions/Contact_pro'
+        adresse:
+          
+          description: utilisateur 
+          items:
+            $ref: './address.yaml#/definitions/Adress'
+        photo:  
+          type: string
+          description: utilisateur 
+        statut:  
+          type: string
+          description: utilisateur  
+        genre:
+          type: string
+          description: utilisateur genre 
+        mot_de_passe:
+          type: string
+          description: N/A    
+        employe_de:
+          
+          description: utilisateur  
+          items:
+            $ref: './structure.yaml#/definitions/Structure'  
+        niveau:
+          type: string
+          description: utilisateur 
+        contrat:
+          type: string
+          description: utilisateur
+  
+

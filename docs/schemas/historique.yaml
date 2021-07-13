@@ -1,0 +1,80 @@
+# complex objects have schema definitions
+#____________________________________________DEFINITIONS__________________________________________________________
+
+definitions:
+#____________________________________________SPECIFIC OBJECTS____________________________________________________
+  Historique:
+    
+    properties:
+      date_creation:
+        type: string
+        description: historique 
+      date_modification:
+        type: string
+        description: historique 
+      date_archivage:
+        type: string
+        description: historique 
+      date_scan:  
+        type: string
+      date_mise_en_service:  
+        type: string  
+    required:
+      - date_creation
+      - date_modification
+      - date_archivage
+      - date_scan
+      - date_mise_en_service
+
+#__________________________________________ COMMON OBJECTS _______________________________________________________              
+  GetHistoriquesListResponse:
+    required:
+      - historique
+    properties:
+      # object of historique
+      historique:
+        
+        items:
+          
+          properties:
+            id:
+              type: string
+            date_creation:
+              type: string
+              description: historique 
+            date_modification:
+              type: string
+              description: historique 
+            date_archivage:
+              type: string
+              description: historique 
+            date_scan:  
+              type: string
+            date_mise_en_service:  
+              type: string
+
+  GethistoriqueResponse:
+      required:
+        - _id
+        - date_creation
+        - date_modification
+        - date_archivage
+        - date_scan
+        - date_mise_en_service
+      properties:
+        _id:
+          type: string
+        date_creation:
+          type: string
+          description: historique 
+        date_modification:
+          type: string
+          description: historique 
+        date_archivage:
+          type: string
+          description: historique 
+        date_scan:  
+          type: string
+        date_mise_en_service:  
+          type: string
+  
